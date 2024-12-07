@@ -8,7 +8,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-{{- toYaml .Values.wp.labels.id | nindent 6 }}
+      id: {{.Values.db.labels.id }}
   replicas: {{ .Values.wp.replicas }}
   template:
     metadata:

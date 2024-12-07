@@ -8,7 +8,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-{{- toYaml .Values.nginx_proxy.labels.id | nindent 6 }}
+      id: {{.Values.db.labels.id }}
   replicas: {{ .Values.nginx_proxy.replicas }}
   template:
     metadata:

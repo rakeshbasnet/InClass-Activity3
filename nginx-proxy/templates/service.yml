@@ -12,4 +12,4 @@ spec:
     targetPort: {{ .Values.nginx_proxy.containerPorts.http }}      # the port exposed by Pod (we defined in the deployment as part of `containerPort)
   type: LoadBalancer
   selector:
-{{- toYaml .Values.nginx_proxy.labels.id | nindent 4 }}       # Pod label that service is using to select Pods
+id: {{.Values.db.labels.id }}       # Pod label that service is using to select Pods

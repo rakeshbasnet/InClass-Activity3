@@ -8,8 +8,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-{{- toYaml .Values.db.labels.id | nindent 8 }}  # Indent matchLabels correctly
-  replicas: {{ .Values.db.replicas }}
+      id: {{.Values.db.labels.id }}  replicas: {{ .Values.db.replicas }}
   template:
     metadata:
       labels:
