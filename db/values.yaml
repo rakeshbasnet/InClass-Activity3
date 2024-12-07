@@ -2,7 +2,7 @@ db:
   name: wp-database
   namespace: db
   labels:
-    id: "c0916493"
+    id: c0916493
     app: db
     env: dev
   image:

@@ -2,7 +2,7 @@ nginx_proxy:
   name: wp-proxy
   namespace: nginx
   labels:
-    id: "c0916493"
+    id: c0916493
     app: nginx
     env: dev
   image:

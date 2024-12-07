@@ -3,7 +3,7 @@ wp:
   servicename: wp-service
   namespace: wp-namespace
   labels:
-    id: "c0916493"
+    id: c0916493
     app: wp-app
     env: dev
   image:
