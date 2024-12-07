@@ -8,7 +8,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      id: {{.Values.db.labels.id }}
+      id: {{.Values.wp.labels.id }}
   replicas: {{ .Values.wp.replicas }}
   template:
     metadata:
