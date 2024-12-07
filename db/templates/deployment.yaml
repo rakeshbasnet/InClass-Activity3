@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.db.name }}
+  namespace: {{ .Values.db.namespace }}
+  labels:
+{{- toYaml .Values.db.labels | nindent 4 }}  # Indent the labels properly here
+spec:
+  selector:
+    matchLabels:
+{{- toYaml .Values.db.labels.id | nindent 8 }}  # Indent matchLabels correctly
+  replicas: {{ .Values.db.replicas }}
+  template:
+    metadata:
+      labels:
+{{- toYaml .Values.db.labels | nindent 8 }}  # Ensure correct indentation here as well
+    spec:
+      containers:
+        - name: {{ .Values.db.name }}
+          image: {{ .Values.db.image.repository }}:{{ .Values.db.image.tag }}
+          imagePullPolicy: {{ .Values.db.image.pullPolicy }}
+          envFrom:
+            - configMapRef:
+                name: {{ .Values.db.name }}-configmap
+                optional: false
+            - secretRef:
+                name: {{ .Values.db.name }}-secret
+                optional: false
+          ports:
+            - containerPort: {{ .Values.db.containerPorts.mysql }}
+

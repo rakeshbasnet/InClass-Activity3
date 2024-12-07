@@ -1,0 +1,33 @@
+wp:
+  name: wp-app
+  servicename: wp-service
+  namespace: wp-namespace
+  labels:
+    id: "c0916493"
+    app: wp-app
+    env: dev
+  image:
+    repository: wordpress
+    tag: latest
+    pullPolicy: Always
+  replicas: 1
+  rollingUpdate:
+    maxSurge: 1
+    maxUnavailable: 1
+  resources:
+    requests:
+      cpu: "150m"
+      memory: "128Mi"
+    limits:
+      cpu: "250m"
+      memory: "256Mi"
+  configmap:
+    ## KEY: "value"
+    WORDPRESS_DB_HOST: "wp-database.db.svc.cluster.local:3306"
+    WORDPRESS_DB_USER: wordpress
+    WORDPRESS_DB_NAME: wordpress
+    APP_ENV: dev
+  secrets:
+    WORDPRESS_DB_PASSWORD: d29yZHByZXNz
+  containerPorts:
+      http: 80

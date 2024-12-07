@@ -1,0 +1,23 @@
+db:
+  name: wp-database
+  namespace: db
+  labels:
+    id: "c0916493"
+    app: db
+    env: dev
+  image:
+    repository: mariadb
+    tag: 10.6.4-focal
+    pullPolicy: Always
+  replicas: 1
+  configmap:
+    ## KEY: "value"
+    MYSQL_DATABASE: wordpress
+    MYSQL_USER: wordpress
+    APP_ENV: dev
+  secrets:
+    MYSQL_ROOT_PASSWORD: c29tZXdvcmtzcA==
+    MYSQL_PASSWORD: d29yZHByZXNz
+  containerPorts:
+      mysql: 3306
+      name: nginx-proxy-cache-store-claim
